@@ -1,0 +1,15 @@
+{
+  "name": "DAT255_server",
+  "description": "The server side side application for DAT255.",
+  "private": true,
+  "author": "Mats Högberg <mats@hgbrg.se>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oscmage/DAT255_server.git"
+  },
+  "dependencies": {
+    "restify": "^4.0.3"
+  },
+  "devDependencies": {},
+  "engine": "node >= 0.4.1"
+}
