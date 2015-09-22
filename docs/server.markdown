@@ -34,7 +34,7 @@ Since port 80 (the default http-port) can only be opened by the root user, we ha
 
 ## Database
 
-
+PostgreSQL is used for the database.
 
 ## Build process
 
