@@ -7,7 +7,6 @@ var exec = require('child_process').exec;
 exports.pull = function (req, res, next) {
     /* this code used to work, but now it doesn't anymore.
      * it is left here in case we have time to debug it in the future.
-     * /
     var signature = 'sha1=' + crypto.createHmac('sha1', process.env.SECRET_TOKEN)
             .update(JSON.stringify(req.body))
             .digest('hex');
