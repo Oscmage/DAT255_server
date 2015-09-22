@@ -3,7 +3,7 @@ var restify = require('restify');
 var git = require('./controllers/git');
 var pages = require('./controllers/pages');
 
-var PORT = 8080;
+var PORT = 80;
 
 // initate server
 var server = restify.createServer({
