@@ -12,9 +12,11 @@ exports.pull = function (req, res, next) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error) {
+            console.log('error!');
             res.status(500);
             next(err);
         } else {
+            console.log('no error!');
             res.status(200);
             next();
         }
