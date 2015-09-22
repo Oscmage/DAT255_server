@@ -3,6 +3,10 @@
   "description": "The server side side application for DAT255.",
   "private": true,
   "author": "Mats Högberg <mats@hgbrg.se>",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "mocha tests"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/oscmage/DAT255_server.git"
@@ -10,6 +14,9 @@
   "dependencies": {
     "restify": "^4.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "nodemon": "^1.7.0"
+  },
   "engine": "node >= 0.4.1"
 }
