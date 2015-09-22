@@ -4,7 +4,7 @@ var git = require('./controllers/git');
 var pages = require('./controllers/pages');
 var flags = require('./controllers/flags');
 
-var PORT = 80;
+var PORT = 8080;
 
 // initate server
 var server = restify.createServer({
