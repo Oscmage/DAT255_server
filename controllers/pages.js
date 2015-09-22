@@ -6,6 +6,6 @@
  * @param next The next method in the call chain.
  */
 exports.index = function (req, res, next) {
-    res.send('hello!');
+    res.status(200);
     next();
 };
