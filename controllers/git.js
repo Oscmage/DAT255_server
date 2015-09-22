@@ -11,13 +11,12 @@ exports.pull = function (req, res, next) {
     exec('git pull', function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
+        
         if (error) {
-            console.log('error!');
-            res.status(500);
+            res.send(500);
             next(err);
         } else {
-            console.log('no error!');
-            res.status(200);
+            res.send(200);
             next();
         }
     });
