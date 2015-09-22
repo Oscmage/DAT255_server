@@ -8,16 +8,16 @@ var exec = require('child_process').exec;
  * @param next The next method in the call chain.
  */
 exports.pull = function (req, res, next) {
-    exec('git pull', function (err, stdout, stderr) {
+    exec('git pull && npm install', function (err, stdout, stderr) {
         console.log(new Date().toISOString(), 'stdout: ' + stdout);
         console.log(new Date().toISOString(), 'stderr: ' + stderr);
 
         if (err) {
             res.send(500);
-            next(err);
-        } else {
-            res.send(200);
-            next();
+            return next(err);
         }
+
+        res.send(200);
+        next();
     });
 };
