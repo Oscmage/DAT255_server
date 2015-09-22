@@ -34,7 +34,7 @@ exports.add = function (req, res, next) {
             return next();
         } else if (!(typeof comment === 'string')) {
             res.send(400,
-                {'errorMessage': 'Bad request, must be a string' });
+                {'errorMessage': 'Bad request, comment must be a string' });
             return next();
         } else if (comment.trim().length < 5) {
             res.send(400,
