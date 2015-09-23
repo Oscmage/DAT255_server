@@ -9,7 +9,6 @@ exports.add = function (req, res, next) {
     var flagType = body.flagType;
     var comment = body.comment;
 
-
     if (flagType === undefined) {
         res.send(400, {'errorMessage':'Bad request, expected flagType'});
         return next();
@@ -21,34 +20,32 @@ exports.add = function (req, res, next) {
         res.send(400,
             {'errorMessage': 'Bad request, flagType must be an integer'});
         return next();
-    } else if (!(LOWEST_FLAG_NUMBER <= flagType  && flagType <= LARGEST_FLAG_NUMBER)) {
+    } else if (!(LOWEST_FLAG_NUMBER <= flagType  && flagType <= LARGEST_FLAG_NUMBER)) { // TODO: Replace with database check
         res.send(400,
             {'errorMessage': 'Bad request, flagType does not exist' });
+        return next();
+    }
+
+    if (comment !== undefined && typeof comment !== 'string') {
+        res.send(400,
+            {'errorMessage': 'Bad request, comment must be a string'});
         return next();
     }
 
     if (flagType === 1) {
         if (comment === undefined) {
             res.send(400,
-                {'errorMessage': 'Bad request, expected comment' });
-            return next();
-        } else if (!(typeof comment === 'string')) {
-            res.send(400,
-                {'errorMessage': 'Bad request, comment must be a string' });
+                {'errorMessage': 'Bad request, expected comment'});
             return next();
         } else if (comment.trim().length < 5) {
             res.send(400,
-                {'errorMessage': 'Bad request, comment must be more than 5 characters' });
+                {'errorMessage': 'Bad request, comment must be more than 5 characters'});
             return next();
-        } else {
-            res.send(200);
-            return next();
-            //TODO: Save the information provided.
         }
-    } else {
-        res.send(200);
-        //TODO: Save the information provided.
     }
 
+    // TODO: Save the information provided.
+
+    res.send(200);
     next();
 };
