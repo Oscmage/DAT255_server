@@ -17,3 +17,7 @@ node_modules
 
 # Misc
 drop/
+
+# SSL
+*.key
+*.crt
