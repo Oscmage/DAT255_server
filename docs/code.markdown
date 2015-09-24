@@ -1,3 +1,5 @@
+# Code
+
 ## How is the code structured?
 
 The launch file or the center of this server is located within "server.js". The server file then delegate the responsibility to handle request for different urls, those files are located within the "controllers" folder. 
