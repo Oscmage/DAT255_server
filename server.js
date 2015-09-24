@@ -14,7 +14,7 @@ var server = restify.createServer({
     //key: fs.readFileSync('ssl/node.key')
 });
 
-server.use(restify.bodyParser({ mParams: false }));
+server.use(restify.bodyParser());
 
 // add pages routes
 server.get('/', pages.index);
