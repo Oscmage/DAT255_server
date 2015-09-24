@@ -36,7 +36,7 @@ Since port 80 (the default http-port) and port 443 (the default https-port) can 
 `iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
 `iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080`
 
-### HTTPS
+### HTTPS (not activated right now, server is using HTTP)
 
 Our server is set up to use HTTPS. The key and certificate for this is stored in the ssl/ folder. These files are not stored in the git repository, so if you want to run the server locally you have to generate these files manually. There is a bash script for generating these keys located in the sh/ folder. To execute it, just type `sh/generate_ssl_key.sh` while standing in the project root directory. You will be prompted to fill in a bunch of information, but you don't have to fill out anything (just press enter).
 
