@@ -1,3 +1,3 @@
 #!/bin/bash
 
-githubhook --secret=$SECRET_TOKEN push sh/git_pull.sh
+nohub githubhook --secret=$SECRET_TOKEN push sh/git_pull.sh &>logs/hook.log &
