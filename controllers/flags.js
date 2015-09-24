@@ -1,11 +1,43 @@
 /**
- * This function adds the flag posted.
- * Required post parameters are:
- * - flagType - integer
- * - (comment - String) only necessary if flagType = 1, flagType = 1 represents the "Other" category.
- * If the parameters provided doesn't meet this requirements it will respond with a 400 status code,
- * bad request + message regarding the issue. Otherwise it will respond with 200 status code (ok).
- * Available flagTypes are 1-6.
+ * This function adds the flag posted. It responds with status code 200 (OK) if the request is correct, otherwise
+ * it responds with status code 400 (Bad Request) and a JSON object explaining what's wrong.
+ *
+ * ## Request:
+ * {
+ *   flagType: integer, (mandatory)
+ *   comment: string (optional, mandatory if flagType = 1)
+ * }
+ *
+ * ## Reponse:
+ * If flagType isn't supplied:
+ * {
+ *   errorMessage: 'Bad request, expected flagType'
+ * }
+ *
+ * If flagType isn't an integer:
+ * {
+ *   errorMessage: 'Bad request, flagType must be an integer'
+ * }
+ *
+ * If flagType doesn't exist:
+ * {
+ *   errorMessage: 'Bad request, flagType does not exist'
+ * }
+ *
+ * If comment is defined and not a string:
+ * {
+ *   errorMessage: 'Bad request, comment must be a string'
+ * }
+ *
+ * If flagType = 1 and comment isn't supplied:
+ * {
+ *   errorMessage: 'Bad request, expected comment'
+ * }
+ *
+ * If flagType = 1 and comment is a string shorter than 5 characters
+ * {
+ *   errorMessage: 'Bad request, comment must be more than 5 characters'
+ * }
  */
 exports.add = function (req, res, next) {
     var LARGEST_FLAG_NUMBER = 6;
