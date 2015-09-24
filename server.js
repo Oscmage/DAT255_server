@@ -9,9 +9,9 @@ var PORT = 8080;
 
 // initate server
 var server = restify.createServer({
-    name: 'DAT255_server',
-    certificate: fs.readFileSync('ssl/node.crt'),
-    key: fs.readFileSync('ssl/node.key')
+    name: 'DAT255_server'
+    //certificate: fs.readFileSync('ssl/node.crt'),
+    //key: fs.readFileSync('ssl/node.key')
 });
 
 server.use(restify.bodyParser({ mParams: false }));
