@@ -43,9 +43,9 @@ exports.add = function (req, res, next) {
     var LARGEST_FLAG_NUMBER = 6;
     var LOWEST_FLAG_NUMBER = 1;
 
-    var body = req.body;
-    var flagType = body.flagType;
-    var comment = body.comment;
+    var params = req.params;
+    var flagType = params.flagType;
+    var comment = params.comment;
 
     if (flagType === undefined) {
         res.send(400, {'errorMessage':'Bad request, expected flagType'});
