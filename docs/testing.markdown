@@ -1,29 +1,17 @@
 # Testing
 
-This document explains the testing for the server.
+## Running tests
+
+The tests are located in the tests/ folder. To run the tests, do the following:
+ 
+ 1. Open the terminal and head to the project root directory.
+ 2. Launch the node server locally by typing: `npm start`
+ 3. Run the tests by typing: `npm test`
 
 ## Technical
 
-For testing we're using 'assert' which comes built in with node, combined with 'chai' an external module([chai's webpage](http://chaijs.com/)). The request are done to localhost which means you will have to run the server locally(see descriptions below). 
+Our tests are set up with the test framework Mocha (https://mochajs.org/), and the assertion library Chai (http://chaijs.com/). 
 
+### Requests
 
-## Running tests
-
-To simply run the tests you will have to:
- 
- 1. Open the terminal and head to the "DAT_server" directory.
- 
- 2. Launch node locally by typing:.
- 
- ```
- npm start
- ```
- 
- 3. Run the tests by typing:
-
- ```
- npm test
- ```
-
-
-
+To test requests, we are using Restify's built in JSON client. We use this client to send requests to localhost (which means that you need to have a server running locally before you start running the tests). We then check that we get the correct response status code, and if eventual error messages are correct.
