@@ -7,6 +7,7 @@ This document explains how the server is set up.
 The server is set up as a Digital Ocean droplet. The physical server is located in Amsterdam.
 
 The specifications of the server is the following:
+
 * 95.85.21.47
 * 512MB Ram
 * 20GB SSD Disk
@@ -28,9 +29,18 @@ This is the user responsible for our web server. All web files are located in th
 
 Our server software is written in Javascript on the Node.js platform. The Node server is handled by pm2. To see if our Node server is up, run `pm2 list` as the www user. To start the Node server, use the command `pm2 start server.js --watch`. pm2 automatically reloads the server when any file changes.
 
-Since port 80 (the default http-port) can only be opened by the root user, we have set up a port forward that redirectds connections on port 80 to port 8080, where our Node server is listening. 
+Since port 80 (the default http-port) and port 443 (the default https-port) can only be opened by the root user, we have set up a port forward that redirects connections on port 80 and 443 to port 8080, where our Node server is listening. 
 
 `iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
+`iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080`
+
+### HTTPS
+
+Our server is set up to use HTTPS. The key and certificate for this is stored in the ssl/ folder, and the files are not stored in the git repository. If you want to run the server locally, you have to generate these files manually with the command below (make sure that you are located in the root directory of the project when running it).
+
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/node.key -out ssl/node.crt`
+
+These certificates are not signed by a CA (Certified Authority), so they will not validate the identity of the server. They will though allow us to encrypt all communications with the server. 
 
 ## Database
 
