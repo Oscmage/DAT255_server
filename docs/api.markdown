@@ -10,16 +10,18 @@ The API responds with status code 200 (OK) if the request is correct. If the req
 }
 ```
 
+The different endpoints accepts parameters of two types: URL and BODY. URL parameters are sent directly in the url, while BODY parameters are sent in the request body.
+
 ## POST /flags
 
 Adds a new flag.
 
 ### Parameters
 
-#### flagType *(mandatory)*
+#### BODY flagType *(mandatory)*
 
 The id of the flag type you want to add. This must be an integer, and it must correspond to a valid flag type.
 
-#### comment *(optional)*
+#### BODY comment *(optional)*
 
 An optional comment for the flag. If it is supplied it must be a string. If flagType = 1, comment is mandatory and must be a string with at least 5 characters.
