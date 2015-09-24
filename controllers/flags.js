@@ -1,11 +1,11 @@
 /**
- *  This function adds the flag posted.
- *  Required parameters are:
- *  - flagType - integer
- *  - (comment - String) only necessary if flagType = 1, flagType = 1 represents the "Other" category.
- *  If the parameters provided doesn't meet this requirements it will respond with a 400 status code,
- *  bad request + message regarding the issue. Otherwise it will respond with 200 status code (ok).
- *  Available flagTypes are 1-6.
+ * This function adds the flag posted.
+ * Required post parameters are:
+ * - flagType - integer
+ * - (comment - String) only necessary if flagType = 1, flagType = 1 represents the "Other" category.
+ * If the parameters provided doesn't meet this requirements it will respond with a 400 status code,
+ * bad request + message regarding the issue. Otherwise it will respond with 200 status code (ok).
+ * Available flagTypes are 1-6.
  */
 exports.add = function (req, res, next) {
     var LARGEST_FLAG_NUMBER = 6;
