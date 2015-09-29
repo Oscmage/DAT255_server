@@ -26,7 +26,7 @@ server.post('/git/pull', git.pull);
 // add flags routes
 server.post('/flags', flags.add);
 
-server.get('/flags/getAll', flags.getAll)
+server.get('/flags', flags.getAll)
 
 // start server
 server.listen(PORT, function() {
