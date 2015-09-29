@@ -1,5 +1,6 @@
 var restify = require('restify');
 var fs = require('fs');
+var db = require('./model/db');
 
 var git = require('./controllers/git');
 var pages = require('./controllers/pages');
