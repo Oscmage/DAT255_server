@@ -102,3 +102,13 @@ exports.add = function (req, res, next) {
     res.send(200);
     next();
 };
+
+
+exports.getAll = function(req, res, next){
+
+    Flag.find(function(err, flags){
+        if (err) return console.error(err);
+        res.send(flags);
+    })
+
+};
