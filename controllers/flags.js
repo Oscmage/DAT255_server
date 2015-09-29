@@ -39,6 +39,11 @@
  *   errorMessage: 'Bad request, comment must be more than 5 characters'
  * }
  */
+
+var mongoose = require('mongoose');
+var Flag = mongoose.model('Flag');
+
+
 exports.add = function (req, res, next) {
     var LARGEST_FLAG_NUMBER = 6;
     var LOWEST_FLAG_NUMBER = 1;
@@ -80,9 +85,19 @@ exports.add = function (req, res, next) {
                 {'errorMessage': 'Bad request, comment must be more than 5 characters'});
             return next();
         }
+
     }
 
-    // TODO: Save the information provided.
+    // TODO: Save the information provided. 
+    var newFlag = new Flag({
+        flagType: flagType,
+        comment: comment
+    });
+
+    newFlag.save(function(err,newFlag) {
+        if (err) return console.error(err);
+        console.log("success")
+    });
 
     res.send(200);
     next();

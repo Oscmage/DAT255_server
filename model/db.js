@@ -34,4 +34,4 @@ process.on('SIGINT', function() {
 
 
 //Require the SCHEMAS
-//require('./../model/team');  
+require('./flag');  
