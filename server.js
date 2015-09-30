@@ -1,5 +1,6 @@
 var restify = require('restify');
 var fs = require('fs');
+var db = require('./model/db');
 
 var git = require('./controllers/git');
 var pages = require('./controllers/pages');
@@ -24,6 +25,8 @@ server.post('/git/pull', git.pull);
 
 // add flags routes
 server.post('/flags', flags.add);
+
+server.get('/flags', flags.getAll)
 
 // start server
 server.listen(PORT, function() {
