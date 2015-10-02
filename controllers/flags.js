@@ -109,6 +109,8 @@ exports.getAll = function(req, res, next){
     Flag.find(function(err, flags){
         if (err) return console.error(err);
         res.send(flags);
+        next();
     })
+    
 
 };
