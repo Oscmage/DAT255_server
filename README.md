@@ -2,6 +2,10 @@
 
 A repository for the server side code of the Commutity project.
 
+## Synchronizing versions of the server and the app
+
+If you are running [the app](https://github.com/oherik/DAT255), make sure that the version of the server code you are using matches the version of the app code. They are tagged with the same version number. If you are using version 0.1 of the app, use version 0.1 of the server by running `git checkout 0.1`.
+
 ## Set up
 
 To set up the server locally just follow these steps.
