@@ -45,14 +45,14 @@ var Flag = mongoose.model('Flag');
 
 
 exports.add = function (req, res, next) {
-    var LARGEST_FLAG_NUMBER = 6;
-    var LOWEST_FLAG_NUMBER = 1;
+
 
     var params = req.params;
     var flagType = params.flagType;
     var comment = params.comment;
     var journeyID = params.journeyID;
     var dgw = params.dgw;
+    var time = params.time;
 
     if (flagType === undefined) {
         res.send(400, {'errorMessage':'Bad request, expected flagType'});
@@ -65,17 +65,13 @@ exports.add = function (req, res, next) {
         res.send(400,
             {'errorMessage': 'Bad request, flagType must be an integer'});
         return next();
-    } else if (!(LOWEST_FLAG_NUMBER <= flagType  && flagType <= LARGEST_FLAG_NUMBER)) { // TODO: Replace with database check
-        res.send(400,
-            {'errorMessage': 'Bad request, flagType does not exist' });
-        return next();
-    }
+    } 
 
     if (comment !== undefined && typeof comment !== 'string') {
         res.send(400,
             {'errorMessage': 'Bad request, comment must be a string'});
         return next();
-    } else {
+    } else if(comment === undefined){
         comment = '';
     }
 
@@ -92,13 +88,14 @@ exports.add = function (req, res, next) {
 
     }
 
-    comment = comment.toString('utf8');
+    var formatedComment = comment.toString('utf8');
 
     var newFlag = new Flag({
         flagType: flagType,
-        comment: comment,
+        comment: formatedComment,
         journeyID: journeyID,
-        dgw: dgw
+        dgw: dgw,
+        time: time
     });
 
     newFlag.save(function(err,newFlag) {
@@ -126,18 +123,6 @@ exports.getAll = function(req, res, next){
 
     Flag.find(function(err, flags){
         if (err) return console.error(err);
-        console.log(flags[1].comment);
-        var fullFlags = 0;
-        //parsedFlags = JSON.parse(flags);
-         for(var i=0;i<flags.length;i++){
-            var obj = flags[i];
-            if(obj.flagType == 2){
-                fullFlags += 1;
-            }
-
-            // }
-        }
-        console.log("full flags : " + fullFlags);
         res.send(flags);
         next();
     })
