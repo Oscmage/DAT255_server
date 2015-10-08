@@ -51,6 +51,8 @@ exports.add = function (req, res, next) {
     var params = req.params;
     var flagType = params.flagType;
     var comment = params.comment;
+    var journeyID = params.journeyID;
+    var dgw = params.dgw;
 
     if (flagType === undefined) {
         res.send(400, {'errorMessage':'Bad request, expected flagType'});
@@ -73,6 +75,8 @@ exports.add = function (req, res, next) {
         res.send(400,
             {'errorMessage': 'Bad request, comment must be a string'});
         return next();
+    } else {
+        comment = '';
     }
 
     if (flagType === 1) {
@@ -88,20 +92,14 @@ exports.add = function (req, res, next) {
 
     }
 
-    var newFlag;
-    // TODO: Save the information provided.
-    if(comment !== undefined && flagType !== undefined){
-        formatedComment = comment.toString("utf8");
-        var newFlag = new Flag({
-            flagType: flagType,
-            comment: formatedComment
-        });
-    }else if(flagType !== undefined){
-        var newFlag = new Flag({
-            flagType: flagType,
-        });
-    }
+    comment = comment.toString('utf8');
 
+    var newFlag = new Flag({
+        flagType: flagType,
+        comment: comment,
+        journeyID: journeyID,
+        dgw: dgw
+    });
 
     newFlag.save(function(err,newFlag) {
         if (err) return console.error(err);
@@ -112,6 +110,17 @@ exports.add = function (req, res, next) {
     next();
 };
 
+
+exports.getFlagsForJourney = function(req, res, next){
+    var journeyID = req.params.journeyID;
+    Flag.find({
+        journeyID: journeyID
+    },function(err, flags){
+        if (err) return console.error(err);
+        res.send(flags);
+        next();
+    });
+};
 
 exports.getAll = function(req, res, next){
 
