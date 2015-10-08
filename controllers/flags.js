@@ -90,7 +90,6 @@ exports.add = function (req, res, next) {
 
     }
 
-    // TODO: Save the information provided. 
     var newFlag = new Flag({
         flagType: flagType,
         comment: comment,
