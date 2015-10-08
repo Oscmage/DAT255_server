@@ -25,3 +25,16 @@ The id of the flag type you want to add. This must be an integer, and it must co
 #### BODY comment *(optional)*
 
 An optional comment for the flag. If it is supplied it must be a string. If flagType = 1, comment is mandatory and must be a string with at least 5 characters.
+
+#### BODY journeyID
+
+This input is not validated. Supposed to be a String
+
+#### BODY dgw
+
+This input is not validated. Supposed to be a String
+
+## GET /flags/:journeyID
+
+Returns all flags for the specified journeyID.
+
