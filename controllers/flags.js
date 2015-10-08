@@ -75,6 +75,8 @@ exports.add = function (req, res, next) {
         res.send(400,
             {'errorMessage': 'Bad request, comment must be a string'});
         return next();
+    } else {
+        comment = '';
     }
 
     if (flagType === 1) {
@@ -90,7 +92,8 @@ exports.add = function (req, res, next) {
 
     }
 
-    // TODO: Save the information provided. 
+    comment = comment.toString('utf8');
+
     var newFlag = new Flag({
         flagType: flagType,
         comment: comment,
@@ -123,6 +126,18 @@ exports.getAll = function(req, res, next){
 
     Flag.find(function(err, flags){
         if (err) return console.error(err);
+        console.log(flags[1].comment);
+        var fullFlags = 0;
+        //parsedFlags = JSON.parse(flags);
+         for(var i=0;i<flags.length;i++){
+            var obj = flags[i];
+            if(obj.flagType == 2){
+                fullFlags += 1;
+            }
+
+            // }
+        }
+        console.log("full flags : " + fullFlags);
         res.send(flags);
         next();
     })

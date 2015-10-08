@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var flagSchema = new mongoose.Schema({
-	flagType: Number,
-	comment: String,
+	flagType : Number,
+	comment : String,
 	dgw: String,
 	journeyID: String
 });
