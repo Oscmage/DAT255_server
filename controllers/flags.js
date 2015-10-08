@@ -45,8 +45,7 @@ var Flag = mongoose.model('Flag');
 
 
 exports.add = function (req, res, next) {
-    var LARGEST_FLAG_NUMBER = 6;
-    var LOWEST_FLAG_NUMBER = 1;
+
 
     var params = req.params;
     var flagType = params.flagType;
@@ -66,11 +65,7 @@ exports.add = function (req, res, next) {
         res.send(400,
             {'errorMessage': 'Bad request, flagType must be an integer'});
         return next();
-    } else if (!(LOWEST_FLAG_NUMBER <= flagType  && flagType <= LARGEST_FLAG_NUMBER)) { // TODO: Replace with database check
-        res.send(400,
-            {'errorMessage': 'Bad request, flagType does not exist' });
-        return next();
-    }
+    } 
 
     if (comment !== undefined && typeof comment !== 'string') {
         res.send(400,
