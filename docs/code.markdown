@@ -9,6 +9,5 @@ All test files can be found under the folder "tests".
 ## Why is it done this way?
 
 The reason for delegating responsibility from "server.js" is simply because we don't want this file clustered. We want you to be able to simply go into "server.js" and easy realise that file "xxx.js" handles request for that particular url. Another reason is to keep them separate to differentiate between server configuration versus logic.
-   
-
+  
 
