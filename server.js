@@ -26,7 +26,9 @@ server.post('/git/pull', git.pull);
 // add flags routes
 server.post('/flags', flags.add);
 
-server.get('/flags', flags.getAll)
+server.get('/flags', flags.getAll);
+
+server.get('/flags/:journeyID', flags.getFlagsForJourney);
 
 // start server
 server.listen(PORT, function() {
