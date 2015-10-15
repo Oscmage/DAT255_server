@@ -1,4 +1,5 @@
-# Commutity
+Commutity
+=========
 
 A repository for the server side code of the Commutity project.
 
