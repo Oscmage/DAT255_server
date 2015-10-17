@@ -107,6 +107,23 @@ exports.add = function (req, res, next) {
     next();
 };
 
+exports.removeFlagById = function(req, res, next){
+
+    var flagId = req.params.flagId;
+    console.log("removing flagID : " + flagId);
+    Flag.remove({
+        _id: flagId
+    },function(err){
+        if(err){
+            return console.error(err);
+        }else{
+            res.send(200);
+            next();
+        }
+
+    });
+
+};
 
 exports.getFlagsForJourney = function(req, res, next){
     var journeyID = req.params.journeyID;

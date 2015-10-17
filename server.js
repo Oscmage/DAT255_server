@@ -28,6 +28,8 @@ server.post('/flags', flags.add);
 
 server.get('/flags', flags.getAll);
 
+server.del('/flags/delete/:flagId', flags.removeFlagById);
+
 server.get('/flags/:journeyID', flags.getFlagsForJourney);
 
 // start server
