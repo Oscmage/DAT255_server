@@ -42,10 +42,6 @@ Our server is set up to use HTTPS. The key and certificate for this is stored in
 
 These certificates are not signed by a CA (Certified Authority), so they will not validate the identity of the server. They will allow us to encrypt all communications with the server though.
 
-## Database
-
-PostgreSQL is used for the database.
-
 ## Build process
 
 We have set up a GitHub webhook that sends a post request to the endpoint `/github/callback` on port `3420` on the server when something is pushed to the server repo. This initiates a `git pull` on the server, and ensures that the server is always running the latest code from master.
