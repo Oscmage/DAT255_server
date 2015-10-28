@@ -1,6 +1,6 @@
 # Server
 
-This document explains how the server is set up.
+This document explains briefly how the server is set up, more in depth information can be found in the developer documentation.
 
 ## Technical information
 
