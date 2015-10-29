@@ -38,3 +38,16 @@ This input is not validated. Supposed to be a String
 
 Returns all flags for the specified journeyID.
 
+### Parameters
+
+#### URL journeyID
+
+The journey id to return flags for.
+
+## DELETE /flags/delete/:flagId
+
+### Parameters
+
+#### URL flagId
+
+The id of the flag to delete.
