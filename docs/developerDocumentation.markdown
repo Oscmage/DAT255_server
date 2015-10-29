@@ -29,7 +29,7 @@ The only data that is stored persistently is the flags. These are stored at mong
             "comment": "foobar",
             "journeyID": "9015014505500098",
             "dgw": "Ericsson$171330",
-            "time": "Mon Oct 26 15:42:22 CET 2015",
+            "time": "1446153081750",
             "__v": 0
         }
 
