@@ -1,13 +1,13 @@
-Commutity
+Waft
 =========
 
-A repository for the server side code of the Commutity project.
+A repository for the server side code of the Waft project.
 
 ## Synchronizing versions of the server and the app
 
 If you are running [the app](https://github.com/oherik/DAT255), make sure that the version of the server code you are using matches the version of the app code. They are tagged with the same version number. If you are using version 0.1 of the app, use version 0.1 of the server by running `git checkout 0.1`.
 
-## Set up
+## Get started
 
 To set up the server locally just follow these steps.
 
@@ -43,3 +43,12 @@ This will start the server at port 8080. The server will automatically reload wh
 ### Step 5 - run tests
 
     npm test
+
+## Documentation
+
+### All documentation can be found within the folder "/docs".
+
+* Server specifics can be found within server.markdown
+* More about how the server is decomposed, database, testing and how it all works together can be found in "developerDocumentation.markdown"
+* Information about the API can be found in "api.markdown"
+
